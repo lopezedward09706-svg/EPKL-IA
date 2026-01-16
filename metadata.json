@@ -1,0 +1,9 @@
+{
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "name": "EDPLIA Cortex v2.0",
+  "description": "Ecosistema Evolutivo de IA para R-QNT Theory y Simulación Cosmológica."
+}

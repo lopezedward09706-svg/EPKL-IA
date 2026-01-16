@@ -1,0 +1,72 @@
+
+/* Tactical Animations for EDPLIA Ecosystem */
+
+@keyframes layerPulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes quantumFlow {
+  0% { 
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+  50% { 
+    background-position: 100% 50%;
+    opacity: 0.6;
+  }
+  100% { 
+    background-position: 0% 50%;
+    opacity: 0.3;
+  }
+}
+
+@keyframes layerFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-2px) rotate(0.3deg);
+  }
+  75% { 
+    transform: translateY(1px) rotate(-0.3deg);
+  }
+}
+
+.animate-layer-float {
+  animation: layerFloat 6s ease-in-out infinite;
+}
+
+.animate-neural-pulse {
+  animation: layerPulse 2s ease-in-out infinite;
+}
+
+.quantum-data-shimmer {
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(59, 130, 246, 0.1),
+    transparent);
+  background-size: 200% 100%;
+  animation: quantumFlow 2s linear infinite;
+}
+
+/* Scrollbar styling for high-density components */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.2);
+}

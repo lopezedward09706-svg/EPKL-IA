@@ -1,0 +1,185 @@
+# CONFIGURACIÓN DEL SISTEMA EDPLIA
+# Edward PL - IA Physics Translation System
+
+system:
+  name: "EDPLIA"
+  version: "2.0.definitive"
+  author: "Edward PL"
+  description: "IA Generadora de Traducción Física y Análisis Matemático"
+  
+  operation_modes:
+    normal:
+      enabled: true
+      description: "Modo operación normal"
+      
+    scaling:
+      enabled: true
+      time_limit: "infinite"
+      description: "Escalamiento en tiempo real ilimitado"
+      
+    paper_generation:
+      enabled: true
+      components: "all"
+      description: "Generación de paper completo"
+      
+    emergency:
+      enabled: true
+      auto_activate: false
+      description: "Modo emergencia con cuarentena"
+
+ias:
+  IA1:
+    name: "Observador de Resultados"
+    enabled: true
+    permissions:
+      read: ["IA5", "IA6"]
+      write: [".txt", ".py"]
+    output_dir: "./DATA/OUTPUTS/IA1/"
+    
+  IA2:
+    name: "Implementador Comparador"
+    enabled: true
+    permissions:
+      read: ["IA4", "IA9"]
+      write: ["simulation_results"]
+    simulation_params:
+      precision: "high"
+      iterations: 1000
+      
+  IA3:
+    name: "Observador Cósmico"
+    enabled: true
+    permissions:
+      read: ["NASA", "CERN", "arXiv", "ParticleData"]
+      write: ["IA4"]
+    apis:
+      nasa:
+        enabled: true
+      cern:
+        enabled: true
+      arxiv:
+        enabled: true
+        update_interval: 3600
+      particle_data:
+        enabled: true
+        
+  IA4:
+    name: "Matemático de Constantes"
+    enabled: true
+    permissions:
+      read: ["IA3"]
+      write: ["IA2"]
+    precision: 1e-12
+    constant_search:
+      enabled: true
+      tolerance: 0.01
+      
+  IA5:
+    name: "Navegador de Código"
+    enabled: true
+    permissions:
+      read: ["source_code", "IA3", "IA6"]
+      write: ["IA1", "IA6"]
+      
+  IA6:
+    name: "Matemático Escalador"
+    enabled: true
+    permissions:
+      read: ["paper", "proposal", "IA1"]
+      write: ["IA1"]
+    scaling_methods:
+      - "logarithmic"
+      - "exponential"
+      - "power_law"
+    
+  IA7:
+    name: "Detector de Fallos"
+    enabled: true
+    permissions:
+      read: ["ALL_IAs", "ALL_DATA"]
+      write: ["error_logs", "IA8_alerts"]
+    check_interval: 60
+    
+  IA8:
+    name: "Corrector de Fallos"
+    enabled: true
+    permissions:
+      read: ["IA7_alerts", "system_code"]
+      write: ["corrections", "patches"]
+    emergency_mode: true
+    
+  IA9:
+    name: "Narrador Humanizado"
+    enabled: true
+    permissions:
+      read: ["ALL_IAs"]
+      write: ["narration.txt", "narration_audio"]
+    narration_style: "conversational"
+      
+  IA10:
+    name: "Intérprete Científico"
+    enabled: true
+    permissions:
+      read: ["IA9", "ALL_DATA"]
+      write: ["predictions.txt", "scientific_analysis.txt"]
+    rigor_level: "high"
+    
+  IA11:
+    name: "Generador de Paper"
+    enabled: true
+    permissions:
+      read: ["ALL_OUTPUTS", "ALL_ANALYSES"]
+      write: ["paper.pdf", "paper.tex", "paper.html"]
+    formats: ["LaTeX", "PDF", "HTML", "Jupyter"]
+    
+  IA12:
+    name: "Publicador Automático"
+    enabled: true
+    permissions:
+      read: ["paper.pdf", "identity.json"]
+      write: ["arxiv_submission", "journal_submissions", "emails"]
+
+security:
+  quantum_isolation:
+    enabled: true
+    channels:
+      IA3->IA4: "cosmic_data"
+      IA4->IA2: "constants"
+      IA5->IA1: "observed_data"
+      IA5->IA6: "theory_data"
+      IA6->IA1: "scaled_results"
+      IA7->IA8: "error_alerts"
+      IA8->SYSTEM: "corrections"
+      IA9->IA10: "narration"
+      IA3->IA10: "observation"
+      
+  immutable_config:
+    enabled: true
+    protected_files: ["config.yaml", "identity.json", "CORE/ia_permissions.json"]
+    human_approval_required: true
+
+publication:
+  identity:
+    author_name: "Edward PL"
+    system_name: "EDPLIA"
+    
+  arxiv:
+    enabled: true
+    auto_submit: false
+    require_human_approval: true
+      
+  journals:
+    enabled: true
+    list:
+      - name: "Physical Review Letters"
+      - name: "Nature Physics"
+      - name: "Science"
+
+emergency:
+  quarantine_mode: true
+  backup_before_lock: true
+  notify_human: true
+
+debug:
+  enabled: false
+  log_level: "INFO"
